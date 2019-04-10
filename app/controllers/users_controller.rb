@@ -12,11 +12,18 @@ class UsersController < ApplicationController
 
   # POST: /users
   post "/users" do
-    redirect "/users"
+    user = User.new(params)
+    if user.save
+      sessions[:user_id]= user.id
+      redirect "/users/#{user.id}"
+    else
+    redirect "/users/new"
+    end
   end
 
   # GET: /users/5
   get "/users/:id" do
+    binding.pry
     erb :"/users/show.html"
   end
 
