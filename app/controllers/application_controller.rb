@@ -13,4 +13,27 @@ class ApplicationController < Sinatra::Base
     erb :welcome
   end
 
+  helpers do
+
+    def redirect_if_not_logged_in
+      if !logged_in?
+        redirect "/users/new.html"
+      end
+    end
+
+    def logged_in?
+      !!session[:user_id]
+    end
+
+    def current_user
+      @current_user ||= User.find_by(id: session[:user_id]) if session[:user_id]
+    end
+
+    def logout!
+      session.clear
+      redirect "/login"
+    end
+
+  end
+
 end

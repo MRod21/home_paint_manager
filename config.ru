@@ -5,6 +5,6 @@ if ActiveRecord::Migrator.needs_migration?
 end
 
 run ApplicationController
-use PaintOolorsController
+use PaintColorsController
 use RoomsController
 use UsersController

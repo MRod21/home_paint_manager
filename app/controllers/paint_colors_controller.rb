@@ -1,4 +1,4 @@
-class PaintOolorsController < ApplicationController
+class PaintColorsController < ApplicationController
 
   # GET: /paint_oolors
   get "/paint_oolors" do
