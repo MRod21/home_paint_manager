@@ -21,7 +21,7 @@ class UsersController < ApplicationController
       session[:user_id]= @user.id
       redirect to "/users/#{@user.id}"
     else
-    redirect "/signup/failed"
+    redirect "/signup"
     end
   end
 
@@ -39,8 +39,9 @@ class UsersController < ApplicationController
     end
   end
 
-  # DELETE: /users/5/delete
-  delete "/users/:id/delete" do
-    redirect "/users"
+  get "/logout" do
+    session.clear
+    redirect "/login"
   end
+
 end
