@@ -11,14 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20190412181543) do
-
-  create_table "paint_colors", force: :cascade do |t|
-    t.string  "color_name"
-    t.string  "brand"
-    t.string  "color_number"
-    t.integer "room_id"
-  end
+ActiveRecord::Schema.define(version: 20190412184812) do
 
   create_table "rooms", force: :cascade do |t|
     t.string  "name"
