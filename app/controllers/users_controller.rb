@@ -1,7 +1,14 @@
 class UsersController < ApplicationController
 
-  get "/users" do
-    erb :"/users/index"
+  get "/users/:id" do
+    @user = User.find_by(id: params[:id])
+    if @user.nil?
+      redirect "/"
+    elsif current_user && @user.id == current_user.id
+      erb :"users/show"
+    else
+      redirect "users/#{current_user.id}"
+    end
   end
 
   get "/signup" do
@@ -10,28 +17,26 @@ class UsersController < ApplicationController
 
   post "/signup" do
     @user = User.new(params)
-    if user.save
-      sessions[:user_id]= user.id
-      redirect "/users/#{user.id}"
+    if @user.save
+      session[:user_id]= @user.id
+      redirect to "/users/#{@user.id}"
     else
-    redirect "/users/failed"
+    redirect "/signup/failed"
     end
   end
 
-  # GET: /users/5
-  get "/users/:id" do
-    binding.pry
-    erb :"/users/show.html"
+  get "/login" do
+    erb :"/users/login"
   end
 
-  # GET: /users/5/edit
-  get "/users/:id/edit" do
-    erb :"/users/edit.html"
-  end
-
-  # PATCH: /users/5
-  patch "/users/:id" do
-    redirect "/users/:id"
+  post "/login" do
+    @user = User.find_by(username: params[:username])
+    if @user && @user.authenticate(params[:password])
+      session[:user_id] = @user.id
+      redirect "/users/#{@user.id}"
+    else
+      redirect "/login"
+    end
   end
 
   # DELETE: /users/5/delete

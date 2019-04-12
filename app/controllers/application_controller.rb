@@ -17,7 +17,7 @@ class ApplicationController < Sinatra::Base
 
     def redirect_if_not_logged_in
       if !logged_in?
-        redirect "/users/new.html"
+        redirect "/users/signup"
       end
     end
 
@@ -31,7 +31,7 @@ class ApplicationController < Sinatra::Base
 
     def logout!
       session.clear
-      redirect "/login"
+      redirect "/users/login"
     end
 
   end
