@@ -1,23 +1,20 @@
 class UsersController < ApplicationController
 
-  # GET: /users
   get "/users" do
-    erb :"/users/index.html"
+    erb :"/users/index"
   end
 
-  # GET: /users/new
   get "/signup" do
-    erb :"/users/new.html"
+    erb :"/users/signup"
   end
 
-  # POST: /users
-  post "/users" do
-    user = User.new(params)
+  post "/signup" do
+    @user = User.new(params)
     if user.save
       sessions[:user_id]= user.id
       redirect "/users/#{user.id}"
     else
-    redirect "/users/new"
+    redirect "/users/failed"
     end
   end
 
