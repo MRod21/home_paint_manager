@@ -21,7 +21,6 @@ class UsersController < ApplicationController
     @user = User.new(params)
     if @user.save
     session[:user_id] = @user.id
-    #binding.pry
       redirect "/users/#{@user.id}"
     else
     redirect "/signup"
