@@ -2,10 +2,8 @@ class UsersController < ApplicationController
 
   get "/users/:id" do
     @user = User.find_by(id: params[:id])
-    binding.pry
     if @user.nil?
 	   redirect '/'
-    #else
     elsif current_user && @user.id == current_user.id
       erb :"/users/show"
     else
