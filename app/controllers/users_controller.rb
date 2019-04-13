@@ -1,15 +1,16 @@
 class UsersController < ApplicationController
 
   get "/users/:id" do
-    @user = User.find_by(id: params[:user_id])
+    @user = User.find_by(id: params[:id])
     binding.pry
-    #if @user.nil?
-	   # redirect '/'
-	  #if current_user && @user.id == current_user.id
-      erb :"/users/show"
+    if @user.nil?
+	   redirect '/'
     #else
-    #  redirect "/users/#{current_user.id}"
-   #end
+    elsif current_user && @user.id == current_user.id
+      erb :"/users/show"
+    else
+    redirect "/users/#{current_user.id}"
+   end
   end
 
   get "/signup" do
@@ -20,7 +21,7 @@ class UsersController < ApplicationController
     @user = User.new(params)
     if @user.save
     session[:user_id] = @user.id
-    binding.pry
+    #binding.pry
       redirect "/users/#{@user.id}"
     else
     redirect "/signup"
