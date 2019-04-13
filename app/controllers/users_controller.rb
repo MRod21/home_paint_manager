@@ -3,11 +3,11 @@ class UsersController < ApplicationController
   get "/users/:id" do
     @user = User.find_by(id: params[:id])
     if @user.nil?
-	   redirect '/'
+	    redirect '/'
     elsif current_user && @user.id == current_user.id
-      erb :"/rooms"
+      erb :"/users/show"
     else
-    redirect "/users/#{current_user.id}"
+      redirect "/users/#{current_user.id}"
    end
   end
 

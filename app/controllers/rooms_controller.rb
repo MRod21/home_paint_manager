@@ -3,7 +3,7 @@ class RoomsController < ApplicationController
   get "/rooms" do
     redirect_if_not_logged_in
     @rooms = current_user.rooms.all
-    erb :"/rooms/index"
+    erb :"/index"
   end
 
   get "/rooms/new" do
