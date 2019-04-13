@@ -1,1 +1,29 @@
-<h1>Insert the form to create a new instance of your model.</h1>
+<div align="center"><h1><strong>Start planning your rooms here:</strong></h1></div>
+
+<form action="/rooms" method="post">
+
+	<div class="form-group">
+			<label for="name">Room:</label>
+			<input name="name" type="text">
+	</div>
+<br>
+	<div class="form-group">
+			<label for="color">Color:</label>
+			<input name="color" type="text">
+	</div>
+	<br>
+	<div class="form-group">
+			<label for="brand">Brand:</label>
+			<input name="brand" type="text">
+	</div>
+	<br>
+	<div class="form-group">
+			<label for="sheen">Sheen:</label>
+			<input name="sheen" type="text">
+	</div>
+	<br>
+
+	<input type="hidden" name="room[user_id]" value="<%= current_user.id %>">
+	<button type="submit" class="btn btn-primary">Submit</button>
+
+</form>
