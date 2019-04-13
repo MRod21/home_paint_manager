@@ -5,7 +5,7 @@ class UsersController < ApplicationController
     if @user.nil?
 	   redirect '/'
     elsif current_user && @user.id == current_user.id
-      erb :"/users/show"
+      erb :"/rooms"
     else
     redirect "/users/#{current_user.id}"
    end

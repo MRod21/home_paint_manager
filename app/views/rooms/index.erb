@@ -1,1 +1,35 @@
-<h1>This is the Model's index page.</h1>
+<!doctype html>
+<html>
+<div align="center">
+  <head>
+    <h1>Welcome <%=@user.username%>!</h1>
+    <br>
+    <h4>Hear are your current rooms and colors:</h4>
+    <br>
+  <style>
+  table, th, td {border: 1px solid blue;
+  }
+  </style>
+  </head>
+  <body>
+
+    <table>
+      <tr>
+        <th>Room</th>
+        <th>Brand</th>
+        <th>Color</th>
+        <th>Sheen</th>
+      </tr>
+      <tr>
+        <td>January</td>
+        <td>$100</td>
+      </tr>
+      <tr>
+        <td>February</td>
+        <td>$80</td>
+      </tr>
+    </table>
+
+  </body>
+</div>
+</html>

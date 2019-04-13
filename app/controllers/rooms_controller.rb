@@ -1,13 +1,15 @@
 class RoomsController < ApplicationController
 
-  # GET: /rooms
   get "/rooms" do
-    erb :"/rooms/index.html"
+    redirect_if_not_logged_in
+    @rooms = current_user.rooms.all
+    erb :"/rooms/index"
   end
 
-  # GET: /rooms/new
   get "/rooms/new" do
-    erb :"/rooms/new.html"
+    redirect_if_not_logged_in
+    @room = Room.new
+    erb :"/rooms/new"
   end
 
   # POST: /rooms
