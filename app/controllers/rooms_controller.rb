@@ -1,9 +1,12 @@
 class RoomsController < ApplicationController
 
   get "/rooms" do
-    redirect_if_not_logged_in
-    @rooms = current_user.rooms.all
-    erb :"/index"
+    if !logged_in?
+      redirect "/"
+    else
+      @rooms = current_user.rooms.all
+      erb :"/index"
+    end
   end
 
   get "/rooms/new" do
@@ -12,14 +15,22 @@ class RoomsController < ApplicationController
     erb :"/rooms/new"
   end
 
-  # POST: /rooms
   post "/rooms" do
-    redirect "/rooms"
+    if !logged_in?
+      redirect "/"
+    else
+      @room = current_user.rooms.new(params)
+      binding.pry
+      if @room.save
+        redirect "/rooms/#{@room.id}"
+      else
+        redirect "/rooms/new"
+      end
+    end
   end
 
-  # GET: /rooms/5
   get "/rooms/:id" do
-    erb :"/rooms/show.html"
+    erb :"/rooms/show"
   end
 
   # GET: /rooms/5/edit
