@@ -1,1 +1,24 @@
 <h1>This is the show page for an individual instance of your model.</h1>
+
+<table class="table table-striped">
+	<thead>
+		<tr>
+			<th scope="col">Room</th>
+			<th scope="col">Brand</th>
+      <th scope="col">Color</th>
+      <th scope="col">Sheen</th>
+		</tr>
+	</thead>
+	<tbody>
+
+		<tr>
+			<td><%= @room.name %></td>
+			<td><%= @room.brand %></td>
+      <td><%= @room.color %></td>
+      <td><%= @room.sheen %></td>
+
+	<input type="hidden" name="_method" value="DELETE">
+	<input type="submit" value="Delete">
+		</tr>
+	</tbody>
+</table>

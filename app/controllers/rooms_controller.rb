@@ -30,11 +30,13 @@ class RoomsController < ApplicationController
   end
 
   get "/rooms/:id" do
+    @room = Room.find_by(id: params[:id])
     erb :"/rooms/show"
   end
 
   # GET: /rooms/5/edit
   get "/rooms/:id/edit" do
+
     erb :"/rooms/edit.html"
   end
 
