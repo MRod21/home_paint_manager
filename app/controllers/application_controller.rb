@@ -8,6 +8,7 @@ class ApplicationController < Sinatra::Base
     set :views, 'app/views'
     enable :sessions
     set :session_secret, "myhome"
+    register Sinatra::Flash
   end
 
   get "/" do
@@ -16,7 +17,6 @@ class ApplicationController < Sinatra::Base
     else
       erb :welcome
     end
-    #binding.pry
   end
 
   helpers do
