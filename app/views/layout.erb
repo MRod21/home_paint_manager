@@ -15,6 +15,9 @@
   </head>
   <body>
     <div class="wrapper">
+    <% if logged_in? %>
+      <h5><a href='/logout'>Logout</a></h5>
+    <% end %>
 
         <%= yield %>
 
