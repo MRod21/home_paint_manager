@@ -26,8 +26,6 @@ class RoomsController < ApplicationController
         redirect "/rooms/new"
       end
     end
-    sleep 2
-    redirect "users/#{current_user.id}"
   end
 
   get "/rooms/:id" do
