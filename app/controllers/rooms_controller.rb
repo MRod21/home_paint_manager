@@ -26,12 +26,13 @@ class RoomsController < ApplicationController
         redirect "/rooms/new"
       end
     end
+    sleep 2
+    redirect "users/#{current_user.id}"
   end
 
   get "/rooms/:id" do
     @room = Room.find_by(id: params[:id])
     erb :"/rooms/show"
-    binding.pry
   end
 
   get "/rooms/:id/edit" do
@@ -39,13 +40,18 @@ class RoomsController < ApplicationController
     if @room.user_id == current_user.id
       erb :"/rooms/edit"
     else
-      erb :"/user/#{current_user.id}"
+      erb :"/users/#{current_user.id}"
     end
   end
 
-  # PATCH: /rooms/5
-  patch "/rooms/:id" do
-    redirect "/rooms/:id"
+  post "/rooms/:id/edit" do
+    @room = Room.find_by(id: params[:id])
+    @room.name = params[:name]
+    @room.color = params[:color]
+    @room.brand = params[:brand]
+    @room.sheen = params[:sheen]
+    @room.save
+    redirect "/users/#{current_user.id}"
   end
 
   post "/rooms/:id/delete" do

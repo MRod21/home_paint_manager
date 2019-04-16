@@ -1,1 +1,29 @@
-<h1>Insert the form to edit an instance of your model here.</h1>
+<div align="center"><h1><strong>Update your room here:</strong></h1></div>
+
+<form action="/rooms/<%= @room.id%>/edit" method="post">
+  <inputs type="hidden" name="_method" value="patch">
+
+	<div class="form-group">
+			<label for="name">Room:</label>
+			<input name="name" type="text">
+	</div>
+<br>
+	<div class="form-group">
+			<label for="color">Color:</label>
+			<input name="color" type="text">
+	</div>
+	<br>
+	<div class="form-group">
+			<label for="brand">Brand:</label>
+			<input name="brand" type="text">
+	</div>
+	<br>
+	<div class="form-group">
+			<label for="sheen">Sheen:</label>
+			<input name="sheen" type="text">
+	</div>
+	<br>
+
+	<button type="submit" class="btn btn-primary">Update</button>
+
+</form>
