@@ -5,7 +5,7 @@ class RoomsController < ApplicationController
       redirect "/"
     else
       @rooms = current_user.rooms.all
-      erb :"/index"
+      erb :"users/show"
     end
   end
 
@@ -20,7 +20,6 @@ class RoomsController < ApplicationController
       redirect "/"
     else
       @room = current_user.rooms.new(params)
-      binding.pry
       if @room.save
         redirect "/rooms/#{@room.id}"
       else
@@ -32,12 +31,16 @@ class RoomsController < ApplicationController
   get "/rooms/:id" do
     @room = Room.find_by(id: params[:id])
     erb :"/rooms/show"
+    binding.pry
   end
 
-  # GET: /rooms/5/edit
   get "/rooms/:id/edit" do
-
-    erb :"/rooms/edit.html"
+    @room = Room.find_by(id: params[:id])
+    if @room.user_id == current_user.id
+      erb :"/rooms/edit"
+    else
+      erb :"/user/#{current_user.id}"
+    end
   end
 
   # PATCH: /rooms/5
@@ -45,8 +48,9 @@ class RoomsController < ApplicationController
     redirect "/rooms/:id"
   end
 
-  # DELETE: /rooms/5/delete
-  delete "/rooms/:id/delete" do
-    redirect "/rooms"
+  post "/rooms/:id/delete" do
+    @room = current_user.rooms.find_by(id: params[:id])
+    @room.destroy
+    redirect "/users/#{current_user.id}"
   end
 end
