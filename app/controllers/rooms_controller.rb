@@ -30,7 +30,7 @@ class RoomsController < ApplicationController
 
   get "/rooms/:id" do
     @room = Room.find_by(id: params[:id])
-    flash[:message] = "Your entry was succesfully added!"
+    flash[:message] = "Succesfully created room!"
     redirect "/users/show"
   end
 
@@ -39,7 +39,7 @@ class RoomsController < ApplicationController
     if @room.user_id == current_user.id
       erb :"/rooms/edit"
     else
-      erb :"/users/#{current_user.id}"
+      redirect :"/users/#{current_user.id}"
     end
   end
 
@@ -50,12 +50,14 @@ class RoomsController < ApplicationController
     @room.brand = params[:brand]
     @room.sheen = params[:sheen]
     @room.save
+    flash[:message] = "Succesfully updated room!"
     redirect "/users/#{current_user.id}"
   end
 
   post "/rooms/:id/delete" do
     @room = current_user.rooms.find_by(id: params[:id])
     @room.destroy
+    flash[:message] = "Succesfully deleted room!"
     redirect "/users/#{current_user.id}"
   end
 end

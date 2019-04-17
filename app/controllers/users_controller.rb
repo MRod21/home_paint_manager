@@ -6,7 +6,6 @@ class UsersController < ApplicationController
 	    redirect '/'
     elsif current_user && @user.id == current_user.id
       @rooms = current_user.rooms
-      binding.pry
       erb :"/users/show"
     else
       redirect "/users/#{current_user.id}"
@@ -20,10 +19,11 @@ class UsersController < ApplicationController
   post "/signup" do
     @user = User.new(params)
     if @user.save
-    session[:user_id] = @user.id
+      session[:user_id] = @user.id
+      flash[:notice] = "Welcome, #{@user.username}!"
       redirect "/users/#{@user.id}"
     else
-    redirect "/signup"
+      redirect "/signup"
     end
   end
 
@@ -35,7 +35,7 @@ class UsersController < ApplicationController
     @user = User.find_by(username: params[:username])
     if @user && @user.authenticate(params[:password])
       session[:user_id] = @user.id
-      flash[:alert] = "Welcome, #{@user.username}!"
+      flash[:notice] = "Welcome, #{@user.username}!"
       redirect "/users/#{@user.id}"
     else
       redirect "/login"

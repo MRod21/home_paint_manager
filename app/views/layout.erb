@@ -19,11 +19,14 @@
 
     <div class="wrapper">
       <div align="center">
-      <% flash.keys.each do |type| %>
-        <div data-alert class="alert-box" tabindex="0" aria-live="assertive" role="alertdialog">
-            <%= flash[type] %>
-            <button tabindex="0" class="close" aria-label="Close Alert">&times;</button>
+      <% if flash[:message] %>
+        <div data-alert class="alert-box" tabindex="0" aria-live="assertive" role="alertdialog" style="border: 2px solid green;">
+            <%= flash[:message] %>
         </div>
+        <% else %>
+         <% if flash[:notice] %>
+         <h2><%= flash[:notice] %></h2>
+         <% end %>
       <% end %>
       </div>
       <div align="right">

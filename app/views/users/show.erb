@@ -1,16 +1,17 @@
 <!doctype html>
 <html>
 <div align="center">
-  <head>
-    <h1>Hear are your current rooms and colors:</h1>
-    <br>
-  </head>
 
-  <body>
     <% if @rooms == [] %>
-    <h2> You currently do not have any rooms added. </h2>
+    <h2> You currently do not have any rooms added </h2>
     <% else %>
 
+    <head>
+      <h1>Hear are your current rooms and colors:</h1>
+      <br>
+    </head>
+
+    <body>
     <table class="table">
     <style>
     table, th, td {border: 1px solid blue;
