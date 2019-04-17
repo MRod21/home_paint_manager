@@ -11,12 +11,12 @@
       <br>
     </head>
 
-    <body>
-    <table class="table">
+
     <style>
-    table, th, td {border: 1px solid blue;
-    }
+    table, th, td {border: 1px solid black;}
     </style>
+    <body>
+    <table class="table" width="500" cellpadding="20" cellspacing="0">
     <thead>
       <tr>
         <th scope="col">Room</th>
@@ -30,15 +30,15 @@
     <tbody>
       <% @rooms.each do |room| %>
       <tr>
-        <td><%= room.name %></td>
-        <td><%= room.brand %></td>
-        <td><%= room.color %></td>
-        <td><%= room.sheen %></td>
-        <td><form action="/rooms/<%= room.id %>/delete" method="post">
+        <td align="center"><%= room.brand %></td>
+        <td align="center"><%= room.name %></td>
+        <td align="center"><%= room.color %></td>
+        <td align="center"><%= room.sheen %></td>
+        <td align="center"><form action="/rooms/<%= room.id %>/delete" method="post">
   	      <input type="hidden" name="_method" value="DELETE">
   	      <input type="submit" value="Delete">
         </form></td>
-        <td><form action="/rooms/<%= room.id %>/edit"%>
+        <td align="center"><form action="/rooms/<%= room.id %>/edit"%>
           <input type="hidden" name="_method" value="EDIT">
           <input type="submit" value="Edit">
         </form></td>
