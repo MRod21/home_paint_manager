@@ -30,7 +30,8 @@ class RoomsController < ApplicationController
 
   get "/rooms/:id" do
     @room = Room.find_by(id: params[:id])
-    erb :"/rooms/show"
+    flash[:message] = "Your entry was succesfully added!"
+    redirect "/users/show"
   end
 
   get "/rooms/:id/edit" do

@@ -2,13 +2,14 @@
 <html>
 <div align="center">
   <head>
-    <h1>Welcome <%=@user.username%>!</h1>
-    <br>
-    <h4>Hear are your current rooms and colors:</h4>
+    <h1>Hear are your current rooms and colors:</h1>
     <br>
   </head>
 
   <body>
+    <% if @rooms == [] %>
+    <h2> You currently do not have any rooms added. </h2>
+    <% else %>
 
     <table class="table">
     <style>
@@ -41,6 +42,7 @@
           <input type="submit" value="Edit">
         </form></td>
       </tr>
+      <% end %>
       <% end %>
     </tbody>
     </table>
