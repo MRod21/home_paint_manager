@@ -33,10 +33,13 @@
         <% if logged_in? %>
           <h5><a href='/logout'>Logout</a></h5>
         <% end %>
+
+        <%= yield %>
+
       </div>
 
 
-      <%= yield %>
+
 
       <footer class="branding">
         <small>&copy; 2019 <strong>HomePaintManager</strong></small>

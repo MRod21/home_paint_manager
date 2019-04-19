@@ -38,6 +38,7 @@ class UsersController < ApplicationController
       flash[:notice] = "Welcome, #{@user.username}!"
       redirect "/users/#{@user.id}"
     else
+      flash[:notice] = "Try Again or If You Don't Have An Account, Please Create One Below "
       redirect "/login"
     end
   end

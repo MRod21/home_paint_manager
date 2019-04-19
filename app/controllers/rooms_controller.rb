@@ -21,6 +21,7 @@ class RoomsController < ApplicationController
     else
       @room = current_user.rooms.new(params)
       if @room.save
+        flash[:message] = "Succesfully created room!"
         redirect "/rooms/#{@room.id}"
       else
         redirect "/rooms/new"
