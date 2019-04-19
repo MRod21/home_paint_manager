@@ -30,8 +30,8 @@
     <tbody>
       <% @rooms.each do |room| %>
       <tr>
-        <td align="center"><%= room.brand %></td>
         <td align="center"><%= room.name %></td>
+        <td align="center"><%= room.brand %></td>
         <td align="center"><%= room.color %></td>
         <td align="center"><%= room.sheen %></td>
         <td align="center"><form action="/rooms/<%= room.id %>/delete" method="post">

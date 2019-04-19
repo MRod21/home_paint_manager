@@ -16,6 +16,7 @@ class RoomsController < ApplicationController
   end
 
   post "/rooms" do
+    binding.pry
     if !logged_in?
       redirect "/"
     else
