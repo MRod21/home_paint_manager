@@ -36,6 +36,7 @@ class RoomsController < ApplicationController
   end
 
   get "/rooms/:id/edit" do
+    #binding.pry
     @room = Room.find_by(id: params[:id])
     if @room.user_id == current_user.id
       erb :"/rooms/edit"
