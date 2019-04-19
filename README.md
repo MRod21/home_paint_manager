@@ -18,7 +18,7 @@ Once the gem installation is complete, enter "shotgun" in your terminal and copy
 
 ## Development
 
-The rake task "rake db:console" is available for you to drop into pry at any time, without having to have put a binding.pry in place previously.
+The rake task "rake console" is available for you to drop into pry at any time, without having to have put a binding.pry in place previously.
 
 ## Contributing
 
