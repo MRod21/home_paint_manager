@@ -8,7 +8,7 @@ class UsersController < ApplicationController
       @rooms = current_user.rooms
       erb :"/users/show"
     else
-      redirect "/users/#{current_user.id}"
+      redirect "/users/#{@user.id}"
    end
   end
 
