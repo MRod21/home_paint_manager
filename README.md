@@ -10,11 +10,25 @@ To run this app, open your terminal and run
 git clone git@github.com:MRod21/home_paint_manager.git
 ```
 
-Then change into the directory "home_paint_manager" and run "bundle install".
+Once it is cloned, change into the directory
+
+```ruby
+cd home_paint_manager
+```
+From this directory enter
+
+ ```ruby
+ bundle install
+ ```
 
 ## Usage
 
-Once the gem installation is complete, enter "shotgun" in your terminal and copy/paste the IP address that appears into your browser. This should take you to the welcome page. From there, it can be operated as a functioning website.
+Once the gem installation is complete, enter
+
+```ruby
+shotgun
+```
+in your terminal. From there, copy/paste the IP address that appears into your browser. This will take you to the welcome page. From there, it can be operated as a functioning website.
 
 ## Development
 
