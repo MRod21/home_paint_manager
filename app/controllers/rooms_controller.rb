@@ -41,7 +41,7 @@ class RoomsController < ApplicationController
     end
   end
 
-  post "/rooms/:id/edit" do
+  patch "/rooms/:id" do
     @room = Room.find_by(id: params[:id])
     @room.update(params)
     flash[:message] = "Succesfully updated room!"
