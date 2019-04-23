@@ -28,7 +28,7 @@ class RoomsController < ApplicationController
   get "/rooms/:id" do
     @room = Room.find_by(id: params[:id])
     flash[:message] = "Succesfully created room!"
-    redirect "/users/show"
+    redirect "/rooms/show"
   end
 
   get "/rooms/:id/edit" do
