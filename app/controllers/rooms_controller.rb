@@ -16,9 +16,6 @@ class RoomsController < ApplicationController
   end
 
   post "/rooms" do
-    if !logged_in?
-      redirect "/"
-    else
       @room = current_user.rooms.new(params)
       if @room.save
         flash[:message] = "Succesfully created room!"
