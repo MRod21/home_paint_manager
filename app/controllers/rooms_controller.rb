@@ -16,13 +16,12 @@ class RoomsController < ApplicationController
   end
 
   post "/rooms" do
-      @room = current_user.rooms.new(params)
-      if @room.save
-        flash[:message] = "Succesfully created room!"
-        redirect "/rooms/#{@room.id}"
-      else
-        redirect "/rooms/new"
-      end
+    @room = current_user.rooms.new(params)
+    if @room.save
+      flash[:message] = "Succesfully created room!"
+      redirect "/rooms/#{@room.id}"
+    else
+      redirect "/rooms/new"
     end
   end
 
