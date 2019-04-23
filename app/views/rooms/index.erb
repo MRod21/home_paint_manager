@@ -34,12 +34,12 @@
         <td align="center"><%= room.brand %></td>
         <td align="center"><%= room.color %></td>
         <td align="center"><%= room.sheen %></td>
-        <td align="center"><form action="/rooms/<%= room.id %>/delete" method="post">
-  	      <input type="hidden" name="_method" value="DELETE">
+        <td align="center"><form action="/rooms/<%= room.id %>" method="post">
+  	      <input type="hidden" name="_method" value="delete">
   	      <input type="submit" value="Delete">
         </form></td>
-        <td align="center"><form action="/rooms/<%= room.id %>/edit"%>
-          <input type="hidden" name="_method" value="EDIT">
+        <td align="center"><form action="/rooms/<%= room.id %>/edit" method="get">
+
           <input type="submit" value="Edit">
         </form></td>
       </tr>
