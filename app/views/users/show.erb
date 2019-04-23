@@ -3,53 +3,12 @@
 <div align="center">
 
     <% if @rooms == [] %>
-    <h2> You currently do not have any rooms added </h2>
+      <h2> You currently do not have any rooms added </h2>
+      <p> To begin, start <a href="/rooms/new"> Here </a>
     <% else %>
-
-    <head>
-      <h1>Hear are your current rooms and colors:</h1>
-      <br>
-    </head>
+      <h1>To view all of your rooms, please click <a href="/rooms/index">Here</a> </h1>
+    <% end %>
 
 
-    <style>
-    table, th, td {border: 1px solid black;}
-    </style>
-    <body>
-    <table class="table" width="500" cellpadding="20" cellspacing="0">
-    <thead>
-      <tr>
-        <th scope="col">Room</th>
-        <th scope="col">Brand</th>
-        <th scope="col">Color</th>
-        <th scope="col">Sheen</th>
-        <th scope="col">Delete</th>
-        <th scope="col">Update</th>
-      </tr>
-    </thead>
-    <tbody>
-      <% @rooms.each do |room| %>
-      <tr>
-        <td align="center"><%= room.name %></td>
-        <td align="center"><%= room.brand %></td>
-        <td align="center"><%= room.color %></td>
-        <td align="center"><%= room.sheen %></td>
-        <td align="center"><form action="/rooms/<%= room.id %>/delete" method="post">
-  	      <input type="hidden" name="_method" value="DELETE">
-  	      <input type="submit" value="Delete">
-        </form></td>
-        <td align="center"><form action="/rooms/<%= room.id %>/edit"%>
-          <input type="hidden" name="_method" value="EDIT">
-          <input type="submit" value="Edit">
-        </form></td>
-      </tr>
-      <% end %>
-      <% end %>
-    </tbody>
-    </table>
-
-    <br>
-    <p> To Begin or To Add More Rooms, Start <a href="/rooms/new"> Here </a>
-  </body>
 </div>
 </html>
