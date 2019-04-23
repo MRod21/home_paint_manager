@@ -4,7 +4,7 @@ class RoomsController < ApplicationController
     if !logged_in?
       redirect "/"
     else
-      @rooms = current_user.rooms.all
+      @room = current_user.rooms.all
       erb :"rooms/index"
     end
   end
@@ -35,13 +35,13 @@ class RoomsController < ApplicationController
     if @room.user_id == current_user.id
       erb :"/rooms/edit"
     else
-      redirect :"/users/#{current_user.id}"
+      redirect "/users/#{current_user.id}"
     end
   end
 
   patch "/rooms/:id" do
-    @room = Room.find_by_id(params[:id])
-    @room.update(params[:id])
+    @room = Room.find(params[:id])
+    @room.update(name: params[:name], color: params[:color], brand: params[:brand], sheen: params[:sheen])
     flash[:message] = "Succesfully updated room!"
     redirect "/rooms/#{@room.id}"
   end

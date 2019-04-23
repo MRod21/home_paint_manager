@@ -6,7 +6,7 @@ class UsersController < ApplicationController
 	    redirect '/'
     elsif current_user && @user.id == current_user.id
       @rooms = current_user.rooms
-      erb :"/rooms/index"
+      erb :"/users/show"
     else
       redirect "/users/#{@user.id}"
    end
