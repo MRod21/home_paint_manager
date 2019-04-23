@@ -5,7 +5,7 @@ class RoomsController < ApplicationController
       redirect "/"
     else
       @rooms = current_user.rooms.all
-      erb :"users/show"
+      erb :"rooms/index"
     end
   end
 
