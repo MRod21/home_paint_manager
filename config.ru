@@ -7,3 +7,4 @@ end
 run ApplicationController
 use RoomsController
 use UsersController
+use Rack::MethodOverride
