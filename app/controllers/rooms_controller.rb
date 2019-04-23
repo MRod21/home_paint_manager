@@ -43,11 +43,7 @@ class RoomsController < ApplicationController
 
   post "/rooms/:id/edit" do
     @room = Room.find_by(id: params[:id])
-    @room.name = params[:name]
-    @room.color = params[:color]
-    @room.brand = params[:brand]
-    @room.sheen = params[:sheen]
-    @room.save
+    @room.update(params)
     flash[:message] = "Succesfully updated room!"
     redirect "/users/#{current_user.id}"
   end
